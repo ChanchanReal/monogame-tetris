@@ -1,0 +1,135 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF89D0-3306-49CB-BB0D-A9D780C66B8C}|TetrisVersion2\\TetrisVersion2.csproj|c:\\users\\cedie\\source\\repos\\tetrisversion2\\tetrisversion2\\src\\tetris.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF89D0-3306-49CB-BB0D-A9D780C66B8C}|TetrisVersion2\\TetrisVersion2.csproj|solutionrelative:tetrisversion2\\src\\tetris.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF89D0-3306-49CB-BB0D-A9D780C66B8C}|TetrisVersion2\\TetrisVersion2.csproj|c:\\users\\cedie\\source\\repos\\tetrisversion2\\tetrisversion2\\src\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF89D0-3306-49CB-BB0D-A9D780C66B8C}|TetrisVersion2\\TetrisVersion2.csproj|solutionrelative:tetrisversion2\\src\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF89D0-3306-49CB-BB0D-A9D780C66B8C}|TetrisVersion2\\TetrisVersion2.csproj|c:\\users\\cedie\\source\\repos\\tetrisversion2\\tetrisversion2\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF89D0-3306-49CB-BB0D-A9D780C66B8C}|TetrisVersion2\\TetrisVersion2.csproj|solutionrelative:tetrisversion2\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF89D0-3306-49CB-BB0D-A9D780C66B8C}|TetrisVersion2\\TetrisVersion2.csproj|c:\\users\\cedie\\source\\repos\\tetrisversion2\\tetrisversion2\\src\\gamehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF89D0-3306-49CB-BB0D-A9D780C66B8C}|TetrisVersion2\\TetrisVersion2.csproj|solutionrelative:tetrisversion2\\src\\gamehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF89D0-3306-49CB-BB0D-A9D780C66B8C}|TetrisVersion2\\TetrisVersion2.csproj|c:\\users\\cedie\\source\\repos\\tetrisversion2\\tetrisversion2\\src\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF89D0-3306-49CB-BB0D-A9D780C66B8C}|TetrisVersion2\\TetrisVersion2.csproj|solutionrelative:tetrisversion2\\src\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EDF89D0-3306-49CB-BB0D-A9D780C66B8C}|TetrisVersion2\\TetrisVersion2.csproj|c:\\users\\cedie\\source\\repos\\tetrisversion2\\tetrisversion2\\src\\tetromino.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EDF89D0-3306-49CB-BB0D-A9D780C66B8C}|TetrisVersion2\\TetrisVersion2.csproj|solutionrelative:tetrisversion2\\src\\tetromino.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 247,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "InputManager.cs",
+              "DocumentMoniker": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\TetrisVersion2\\src\\InputManager.cs",
+              "RelativeDocumentMoniker": "TetrisVersion2\\src\\InputManager.cs",
+              "ToolTip": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\TetrisVersion2\\src\\InputManager.cs",
+              "RelativeToolTip": "TetrisVersion2\\src\\InputManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T23:21:03.595Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Game1.cs",
+              "DocumentMoniker": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\TetrisVersion2\\Game1.cs",
+              "RelativeDocumentMoniker": "TetrisVersion2\\Game1.cs",
+              "ToolTip": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\TetrisVersion2\\Game1.cs",
+              "RelativeToolTip": "TetrisVersion2\\Game1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T23:39:00.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameHelper.cs",
+              "DocumentMoniker": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\TetrisVersion2\\src\\GameHelper.cs",
+              "RelativeDocumentMoniker": "TetrisVersion2\\src\\GameHelper.cs",
+              "ToolTip": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\TetrisVersion2\\src\\GameHelper.cs",
+              "RelativeToolTip": "TetrisVersion2\\src\\GameHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T23:00:52.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Tetris.cs",
+              "DocumentMoniker": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\TetrisVersion2\\src\\Tetris.cs",
+              "RelativeDocumentMoniker": "TetrisVersion2\\src\\Tetris.cs",
+              "ToolTip": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\TetrisVersion2\\src\\Tetris.cs",
+              "RelativeToolTip": "TetrisVersion2\\src\\Tetris.cs",
+              "ViewState": "AgIAAOIAAAAAAAAAAAAjwPUAAABzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T22:59:17.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Board.cs",
+              "DocumentMoniker": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\TetrisVersion2\\src\\Board.cs",
+              "RelativeDocumentMoniker": "TetrisVersion2\\src\\Board.cs",
+              "ToolTip": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\TetrisVersion2\\src\\Board.cs",
+              "RelativeToolTip": "TetrisVersion2\\src\\Board.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAswAwAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T22:50:37.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Tetromino.cs",
+              "DocumentMoniker": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\TetrisVersion2\\src\\Tetromino.cs",
+              "RelativeDocumentMoniker": "TetrisVersion2\\src\\Tetromino.cs",
+              "ToolTip": "C:\\Users\\cedie\\source\\repos\\TetrisVersion2\\TetrisVersion2\\src\\Tetromino.cs",
+              "RelativeToolTip": "TetrisVersion2\\src\\Tetromino.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAIwE0AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T22:44:10.111Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
