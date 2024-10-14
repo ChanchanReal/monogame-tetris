@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TetrisVersion2.src
 {
@@ -10,23 +11,35 @@ namespace TetrisVersion2.src
     {
         private Random random = new Random();
         private Board board;
+        private List<Tetromino> tetrominos;
         private Tetromino currentTetromino;
         private Tetromino nextTetromino;
         private Tetromino holdTetromino;
 
         private Texture2D tetrominoTexture;
-        private float delay = 0.8f;
+        private const float ButtonPressedDelay = 0.8f;
         private float fallDelay = 3f;
         private float fallTime = 0f;
         private float buttonPressed = 0f;
+        private float InstaplacedDelay = 0f;
+
+        private const int levelScoreThreshold = 10000;
+        private int lastUpdateScore = 0;
+        private const float speedUpFall = 0.3f;
+        private const float increasePointPerLevel = 200;
+
+        private int score = 0;
+        private int level = 0;
 
         private Texture2D texture;
+        private SpriteFont spriteFont;
         public Tetris() 
         {
-
+            GenerateTetrominos();
+            spriteFont = GameHelper.ContentManager.Load<SpriteFont>("font");
             texture = new Texture2D(GameHelper.GraphicsDevice, 1, 1);
             texture.SetData(new Color[] { Color.DarkGray });
-            board = new Board(texture);
+            board = new Board(texture, this);
             tetrominoTexture = new Texture2D(GameHelper.GraphicsDevice, 1, 1);
             tetrominoTexture.SetData(new Color[] {Color.Blue});
             currentTetromino = GenerateTetromino();
@@ -35,7 +48,34 @@ namespace TetrisVersion2.src
 
         public Tetromino GenerateTetromino()
         {
-            int[,] i = { 
+            if (tetrominos == null || tetrominos.Count <= 0)
+            {
+                GenerateTetrominos();
+            }
+
+            Tetromino tetromino = tetrominos.FirstOrDefault();
+            tetrominos.Remove(tetromino);
+            return tetromino;
+
+        }
+        public void Update()
+        {
+            AutoFallPiece();
+            Controls();
+            InstantPlacedTetromino();
+            GameLevelSpeedUp();
+            ComboScore(ref totalIncrementScore); // apply the combo multiplier
+
+            if (comboDelay > 0)
+            {
+                comboDelay -= (float)GameHelper.GameTime.ElapsedGameTime.TotalMilliseconds; // decrease the delay timer over time
+            }
+        }
+
+        private void GenerateTetrominos()
+        {
+            // using shuffle algorithm
+            int[,] i = {
                 { 1},
                 { 1},
                 { 1},
@@ -72,35 +112,45 @@ namespace TetrisVersion2.src
                 { 0, 7, 7},
             };
 
-            List<int[,]> tetrominoes = new List<int[,]>();
-            tetrominoes.Add(i);
-            tetrominoes.Add(o);
-            tetrominoes.Add(t);
-            tetrominoes.Add(j);
-            tetrominoes.Add(l);
-            tetrominoes.Add(s);
-            tetrominoes.Add(z);
+            List<int[,]> tetrominoShape = new List<int[,]>();
+            tetrominoShape.Add(i);
+            tetrominoShape.Add(o);
+            tetrominoShape.Add(t);
+            tetrominoShape.Add(j);
+            tetrominoShape.Add(l);
+            tetrominoShape.Add(s);
+            tetrominoShape.Add(z);
 
-            int index = random.Next(0, tetrominoes.Count);
+            List<Tetromino> tetrominoes = new List<Tetromino>();
+            tetrominoShape.ForEach(shape => {
+                tetrominoes.Add(new Tetromino(shape, 4, 0, texture));
+            });
 
-            return new Tetromino(tetrominoes[index], 4, 0, tetrominoTexture);
+            ShuffleTetrominos(ref tetrominoes);
 
+            tetrominos = tetrominoes;
         }
-        public void Update()
+
+        private void ShuffleTetrominos(ref List<Tetromino> tetrominoList)
         {
-            AutoFallPiece();
-            Controls();
-            InstantPlacedTetromino();
-        }
+            int n = tetrominoList.Count;
 
+            while (n > 0)
+            {
+                n--;
+                int k = random.Next(n + 1);
+                Tetromino tetromino = tetrominoList[k];
+                tetrominoList[k] = tetrominoList[n];
+                tetrominoList[n] = tetromino;
+            }
+        }
         public void Controls()
         {
             if (buttonPressed <= 0)
             {
                 if (InputManager.TapInput(Keys.T))
                 {
-                    buttonPressed = delay;
-
+                    buttonPressed = ButtonPressedDelay;
                     if (holdTetromino == null)
                     {
                         holdTetromino = currentTetromino;
@@ -117,10 +167,11 @@ namespace TetrisVersion2.src
                         holdTetromino.Column = 0;
                         holdTetromino.Row = 4;
                     }
+                    InstaplacedDelay = 1f;
                 }
                 if (InputManager.input(Keys.R))
                 {
-                    buttonPressed = delay;
+                    buttonPressed = ButtonPressedDelay;
                     currentTetromino.Rotate();
                     if (!board.IsPositionValid(currentTetromino.Shape,currentTetromino.Row, currentTetromino.Column))
                         currentTetromino.RotateBack();
@@ -128,20 +179,22 @@ namespace TetrisVersion2.src
 
                 if (InputManager.input(Keys.Right))
                 {
-                    buttonPressed = delay;
+                    buttonPressed = ButtonPressedDelay;
 
                     if (board.IsPositionValid(currentTetromino.Shape, currentTetromino.Row + 1, currentTetromino.Column))
                     currentTetromino.Right();
+                    InstaplacedDelay = 1f;
                 }
                 if (InputManager.input(Keys.Left))
                 {
-                    buttonPressed = delay;
+                    buttonPressed = ButtonPressedDelay;
                     if (board.IsPositionValid(currentTetromino.Shape, currentTetromino.Row - 1, currentTetromino.Column))
                         currentTetromino.Left();
+                    InstaplacedDelay = 1f;
                 }
                 if (InputManager.input(Keys.Down))
                 {
-                    buttonPressed = delay;
+                    buttonPressed = ButtonPressedDelay;
 
                     int current = 1 + currentTetromino.Column;
                     if (board.IsPositionValid(currentTetromino.Shape, currentTetromino.Row, current))
@@ -155,6 +208,7 @@ namespace TetrisVersion2.src
                         nextTetromino = GenerateTetromino();
                     }
 
+                    InstaplacedDelay = 1f;
                 }
                 board.DisplayDebug();
 
@@ -162,6 +216,7 @@ namespace TetrisVersion2.src
 
             board.ClearFullLine();
             buttonPressed -= 0.1f;
+            InstaplacedDelay -= 0.1f;
         }
 
         public void AutoFallPiece()
@@ -189,7 +244,11 @@ namespace TetrisVersion2.src
 
         public void InstantPlacedTetromino()
         {
+            if (InstaplacedDelay > 0)
+                return;
+
             bool isPlaced = false;
+
             if (InputManager.TapInput(Keys.Space))
             {
 
@@ -249,6 +308,15 @@ namespace TetrisVersion2.src
                 }
             }
         }
+        private void GameLevelSpeedUp()
+        {
+            if (score >= lastUpdateScore + levelScoreThreshold)
+            {
+                lastUpdateScore += levelScoreThreshold; // Update the last score threshold
+                fallDelay -= speedUpFall;               // Speed up the game by reducing fall delay
+                level += 1;                             // Increase the game level
+            }
+        }
         private void DisplayHoldPiece(SpriteBatch sprite)
         {
             DisplayStaticTetromino(holdTetromino,sprite, 0, 200);
@@ -265,10 +333,46 @@ namespace TetrisVersion2.src
             // background next piece
             PanelBackground(new Rectangle(465, 35, 210, 130), Color.Gray, spriteBatch);
             PanelBackground(new Rectangle(470, 40, 200, 120), Color.Black, spriteBatch);
+            spriteBatch.DrawString(spriteFont, "[Next]", new Vector2(465, 10), Color.AliceBlue);
 
             // holdpeice background
             PanelBackground(new Rectangle(465, 235, 210, 130), Color.Gray, spriteBatch);
             PanelBackground(new Rectangle(470, 240, 200, 120), Color.Black, spriteBatch);
+            spriteBatch.DrawString(spriteFont, "[Hold]", new Vector2(465, 210), Color.AliceBlue);
+            spriteBatch.DrawString(spriteFont, "[Score] : " + score, new Vector2(465, 510), Color.AliceBlue);
+            spriteBatch.DrawString(spriteFont, "[Level] " + level, new Vector2(465, 530), Color.AliceBlue);
+            spriteBatch.DrawString(spriteFont, "[Time]" + GameHelper.GameTime.TotalGameTime, new Vector2(465, 550), Color.AliceBlue);
+        }
+        private const float comboDuration = 1f;
+        private float comboDelay = 0;
+        private int currentCombo = 0;
+        private int totalIncrementScore;
+        // if this called multipleTimes we add add multiplier to the score
+        public void ComboScore(ref int addedScore)
+        {
+            // If comboDelay has expired, reset the combo
+            if (currentCombo > 1 && comboDelay <= 0)
+            {
+                addedScore *= currentCombo;
+               
+            }
+        }
+        public void AddScore(int addScore)
+        {
+            comboDelay = comboDuration; // reset the combo delay each time a new score is added
+            int timeScore = (int)GameHelper.GameTime.TotalGameTime.Minutes;
+            int timeBonus = 100 * timeScore;
+            totalIncrementScore = addScore + timeBonus;
+            score += totalIncrementScore; // increase the score
+
+            if (comboDelay > 0)
+            {
+                currentCombo++;
+            }
+            else
+            {
+                currentCombo = 0; // reset the combo
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {

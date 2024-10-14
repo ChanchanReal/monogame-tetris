@@ -8,10 +8,12 @@ namespace TetrisVersion2.src
     {
         public int[,] GameBoard;
         private Texture2D _gridTexture;
-        public Board(Texture2D gridTexture)
+        private Tetris tetris;
+        public Board(Texture2D gridTexture,Tetris tetris)
         {
             GameBoard = new int[20, 10];
             _gridTexture = gridTexture;
+            this.tetris = tetris;
         }
 
         public void RenderBoard(SpriteBatch spriteBatch)
@@ -28,11 +30,11 @@ namespace TetrisVersion2.src
         {
             return num switch
             {
-                1 => Color.SkyBlue,
-                2 => Color.Yellow,
-                3 => Color.Purple,
-                4 => Color.DarkBlue,
-                5 => Color.Green,
+                1 => Color.LightCyan,
+                2 => Color.Gold,
+                3 => Color.Magenta,
+                4 => Color.Turquoise,
+                5 => Color.GreenYellow,
                 6 => Color.Red,
                 7 => Color.Orange,
                 _ => Color.Black,
@@ -90,6 +92,7 @@ namespace TetrisVersion2.src
                     ShiftRowDown(col);
                     col += 1;
                     col = Math.Clamp(col, 0, GameBoard.GetLength(0) - 1);
+                    tetris.AddScore(100);
                 }
             }
 

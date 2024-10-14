@@ -25,6 +25,7 @@ namespace TetrisVersion2
             // TODO: Add your initialization logic here
 
             GameHelper.GraphicsDevice = _graphics.GraphicsDevice;
+            GameHelper.ContentManager = Content;
             tetris = new Tetris();
             GameHelper.GameSize = new Point(screenSize.Item1, screenSize.Item2);
             base.Initialize();

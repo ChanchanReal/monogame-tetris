@@ -70,11 +70,11 @@ namespace TetrisVersion2.src
         {
             return num switch
             {
-                1 => Color.SkyBlue,
-                2 => Color.Yellow,
-                3 => Color.Purple,
-                4 => Color.DarkBlue,
-                5 => Color.Green,
+                1 => Color.LightCyan,
+                2 => Color.Gold,
+                3 => Color.Magenta,
+                4 => Color.Turquoise,
+                5 => Color.GreenYellow,
                 6 => Color.Red,
                 7 => Color.Orange,
                 _ => Color.Black,

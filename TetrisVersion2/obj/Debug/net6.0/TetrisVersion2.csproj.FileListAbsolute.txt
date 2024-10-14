@@ -23,3 +23,5 @@ C:\Users\cedie\source\repos\TetrisVersion2\TetrisVersion2\obj\Debug\net6.0\refin
 C:\Users\cedie\source\repos\TetrisVersion2\TetrisVersion2\obj\Debug\net6.0\TetrisVersion2.pdb
 C:\Users\cedie\source\repos\TetrisVersion2\TetrisVersion2\obj\Debug\net6.0\TetrisVersion2.genruntimeconfig.cache
 C:\Users\cedie\source\repos\TetrisVersion2\TetrisVersion2\obj\Debug\net6.0\ref\TetrisVersion2.dll
+C:\Users\cedie\source\repos\TetrisVersion2\TetrisVersion2\obj\Debug\net6.0\TetrisVersion2.sourcelink.json
+C:\Users\cedie\source\repos\TetrisVersion2\TetrisVersion2\bin\Debug\net6.0\Content\font.xnb
